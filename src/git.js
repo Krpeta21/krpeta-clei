@@ -38,6 +38,10 @@ export async function gitInit () {
 
 export async function addRemote (urlRepo) {
   const { stdout } = await execAsync(`git remote add origin ${urlRepo}`)
-  console.log(stdout)
+  return stdout
+}
+
+export async function changeRemoteUrl (newUrl) {
+  const { stdout } = await execAsync(`git remote set-url origin ${newUrl}`)
   return stdout
 }
