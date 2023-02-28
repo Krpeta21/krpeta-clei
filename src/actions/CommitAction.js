@@ -96,7 +96,7 @@ export async function CommitAction () {
   await gitCommit({ commit })
   outro(
     colors.green(`
-    ¡✅Commit realizado!
+    ¡ ✅ Commit realizado!
     ¡Gracias por usar el asistente!
     `)
   )

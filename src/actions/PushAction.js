@@ -6,19 +6,11 @@ import {
 } from '@clack/prompts'
 
 import colors from 'picocolors'
-import { trytm } from '@bdsqqq/try'
 
-import { getChangedFiles, getStagedFiles, gitPush } from '../git.js'
+import { gitPush } from '../git.js'
 import { exitProgram } from '../utils.js'
 
 export async function PushAction () {
-  const [errorChangedFiles] = await trytm(getChangedFiles())
-  const [errorStagedFiles] = await trytm(getStagedFiles())
-
-  if (errorChangedFiles ?? errorStagedFiles) {
-    outro(colors.red('Error: tienes cambios pendientes.'))
-    process.exit(1)
-  }
   const confirmGitPush = await confirm({
     initialValue: true,
     message: `${colors.cyan('¿Quieres hacer push al commit?')}`
