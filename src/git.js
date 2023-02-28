@@ -36,7 +36,8 @@ export async function gitInit () {
   return stdout
 }
 
-export async function addRemote ({ urlRepo }) {
+
+export async function addRemote (urlRepo) {
   const { stdout } = await execAsync(`git remote add origin ${urlRepo}`)
   console.log(stdout)
   return stdout

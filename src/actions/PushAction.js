@@ -33,4 +33,10 @@ export async function PushAction () {
   })
 
   await gitPush(branchName)
+  outro(
+    colors.green(`
+    ¡ ✅ Push realizado!
+    ¡Gracias por usar el asistente!
+    `)
+  )
 }
