@@ -11,6 +11,7 @@ import { ACTIONS_TYPES } from './types/actions-types.js'
 
 import { InitAction } from './actions/InitAction.js'
 import { CommitAction } from './actions/CommitAction.js'
+import { PushAction } from './actions/PushAction.js'
 
 intro(
   colors.inverse(` Asistente de comandos GIT por ${colors.yellow(' @krpeta21 ')}`)
@@ -29,5 +30,8 @@ if (actionType === ACTIONS_TYPES.init.action) {
   await InitAction()
 }
 if (actionType === ACTIONS_TYPES.commit.action) {
-  CommitAction()
+  await CommitAction()
+}
+if (actionType === ACTIONS_TYPES.push.action) {
+  await PushAction()
 }

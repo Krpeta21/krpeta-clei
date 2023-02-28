@@ -17,5 +17,10 @@ export const ACTIONS_TYPES = {
     action: 'commit',
     emoji: '🚧',
     description: 'Realiza un commit.'
+  },
+  push: {
+    action: 'push',
+    emoji: '⬆️',
+    description: 'Haz un push de tus archivos al repositorio.'
   }
 }

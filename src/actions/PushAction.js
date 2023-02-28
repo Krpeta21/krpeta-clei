@@ -16,7 +16,7 @@ export async function PushAction () {
   const [errorStagedFiles] = await trytm(getStagedFiles())
 
   if (errorChangedFiles ?? errorStagedFiles) {
-    outro(colors.red('Error: Comprueba que estás en un repositorio de git'))
+    outro(colors.red('Error: tienes cambios pendientes.'))
     process.exit(1)
   }
   const confirmGitPush = await confirm({
