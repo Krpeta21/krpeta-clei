@@ -2,8 +2,12 @@
   "name": "fastgit",
   "version": "1.0.0",
   "description": "",
+  "bin": {
+    "fastgit": "./src/bin.js"
+  },
   "main": "index.js",
   "scripts": {
+    "fast": "fastgit",
     "start": "node ./src/index.js"
   },
   "keywords": [],
