@@ -5,8 +5,8 @@ import {
   isCancel
 } from '@clack/prompts'
 import colors from 'picocolors'
-import { addRemote } from '../git'
-import { exitProgram } from '../utils'
+import { addRemote } from '../git.js'
+import { exitProgram } from '../utils.js'
 export async function ChangeLinkRemote () {
   const remoteUrl = await text(
     {
@@ -33,8 +33,8 @@ export async function ChangeLinkRemote () {
   await addRemote(remoteUrl)
   outro(
     colors.green(`
-    ¡ ✅ Cambio de URL realizado!
-    ¡Gracias por usar el asistente!
-    `)
+      ¡ ✅ Cambio de URL realizado!
+      ¡Gracias por usar el asistente!
+      `)
   )
 }

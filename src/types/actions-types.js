@@ -5,6 +5,7 @@ export const ACTIONS_TYPES = {
     description: 'Inicia el proyecto de git.'
   },
   remote: {
+    action: 'remote',
     emoji: '🎮',
     description: 'Agrega/Cambia el repositorio de github.'
   },

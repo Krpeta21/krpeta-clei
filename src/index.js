@@ -12,6 +12,7 @@ import { ACTIONS_TYPES } from './types/actions-types.js'
 import { InitAction } from './actions/InitAction.js'
 import { CommitAction } from './actions/CommitAction.js'
 import { PushAction } from './actions/PushAction.js'
+import { ChangeLinkRemote } from './actions/ChangeLinkRemote.js'
 
 intro(
   colors.inverse(` Asistente de comandos GIT por ${colors.yellow(' @krpeta21 ')}`)
@@ -34,4 +35,7 @@ if (actionType === ACTIONS_TYPES.commit.action) {
 }
 if (actionType === ACTIONS_TYPES.push.action) {
   await PushAction()
+}
+if (actionType === ACTIONS_TYPES.remote.action) {
+  await ChangeLinkRemote()
 }
