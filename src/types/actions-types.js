@@ -21,7 +21,7 @@ export const ACTIONS_TYPES = {
   },
   push: {
     action: 'push',
-    emoji: '⬆️',
+    emoji: '⬆️ ',
     description: 'Haz un push de tus archivos al repositorio.'
   }
 }
