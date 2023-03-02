@@ -11,18 +11,6 @@ import { gitPush, gitShowBranchs } from '../git.js'
 import { exitProgram } from '../utils.js'
 
 export async function PushAction () {
-  const confirmGitPush = await confirm({
-    initialValue: true,
-    message: `${colors.cyan('¿Quieres hacer push al repositorio?')}`
-  })
-
-  if (isCancel(confirmGitPush)) exitProgram({ message: 'No se ha iniciado el repositorio.' })
-
-  if (!confirmGitPush) {
-    outro(colors.yellow('No se ha hecho push al repositorio.'))
-    process.exit(0)
-  }
-
   const branchs = await gitShowBranchs()
   const arrayBranchs = branchs.split('\n')
 
@@ -39,7 +27,7 @@ export async function PushAction () {
   )
   if (isCancel(branchToSwitch)) exitProgram()
   const confirmPushBranch = await confirm({
-    message: colors.white(`¿Estas seguro que deseas hacer push a la rama "${colors.red(colors.bold(`${branchToSwitch}`))}"`)
+    message: colors.white(`¿Estas seguro que deseas hacer push a la rama "${colors.green(colors.bold(`${branchToSwitch}`))}"`)
   })
   if (isCancel(confirmPushBranch)) exitProgram()
   if (!confirmPushBranch) return colors.yellow('No se ha hecho push al repositorio.')
