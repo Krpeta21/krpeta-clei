@@ -42,8 +42,8 @@ export async function PushAction () {
   await gitPush(branchToSwitch)
   outro(
     colors.green(`
-    ¡ 🎉 Push realizado con exito 🎉!
-¡Gracias por usar el asistente!
+   ¡ 🎉 Push realizado con exito 🎉!
+     ¡Gracias por usar el asistente!
     `)
   )
 }

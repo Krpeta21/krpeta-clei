@@ -21,8 +21,8 @@ export async function SwitchAction () {
   await gitSwitchBranch(branchToSwitch)
   outro(
     colors.green(`
-    ¡ 🔀 Rama Cambiada a ${branchToSwitch}!
+¡ 🔀 Rama Cambiada a ${branchToSwitch}!
     ¡Gracias por usar el asistente!
-    `)
+`)
   )
 }
