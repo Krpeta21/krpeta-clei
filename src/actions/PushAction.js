@@ -38,6 +38,11 @@ export async function PushAction () {
     }
   )
   if (isCancel(branchToSwitch)) exitProgram()
+  const confirmPushBranch = await confirm({
+    message: colors.white(`¿Estas seguro que deseas hacer push a la rama "${colors.red(colors.bold(`${branchToSwitch}`))}"`)
+  })
+  if (isCancel(confirmPushBranch)) exitProgram()
+  if (!confirmPushBranch) return colors.yellow('No se ha hecho push al repositorio.')
 
   await gitPush(branchToSwitch)
   outro(
