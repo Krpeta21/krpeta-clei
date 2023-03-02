@@ -1,13 +1,13 @@
 {
   "name": "git-easy-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "Git basic commands with UI assistant.",
   "bin": {
     "giteasycli": "./src/bin.js"
   },
   "main": "index.js",
   "scripts": {
-    "giteasycli": "git-easy-cli",
+    "cli": "giteasycli",
     "start": "node ./src/index.js"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "git-easy-cli": "file://.",
     "standard": "^17.0.0"
   },
   "eslintConfig": {
