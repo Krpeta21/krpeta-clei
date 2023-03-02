@@ -7,10 +7,10 @@ This is a CLI application that helps you with git commands via the terminal.
 Command: npx git-easy-cli
 ## DEMO
 <p align="center">
-  <img src="" alt="Demo"/>
+  <img src="https://i.postimg.cc/YqZsWM8R/demo.gif" alt="Demo"/>
 </p>
 ## Technologies used
-
+    
 **Developed in:** Javascript
 
 **Dependencies**: 
