@@ -20,5 +20,5 @@ ${branchs}`)
     outro(colors.yellow('Se ha cerrado el programa.'))
     process.exit(0)
   }
-  BranchAction()
+  await BranchAction()
 }

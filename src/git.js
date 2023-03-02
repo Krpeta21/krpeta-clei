@@ -55,3 +55,7 @@ export async function gitShowBranchs () {
   const { stdout } = await execAsync('git branch')
   return stdout
 }
+export async function gitDeleteBranch (cleanBranchToDelete) {
+  const { stdout } = await execAsync(`git branch -D ${cleanBranchToDelete}`)
+  return stdout
+}

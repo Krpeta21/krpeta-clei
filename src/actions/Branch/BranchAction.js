@@ -6,6 +6,7 @@ import colors from 'picocolors'
 import { BRANCH_TYPES } from '../../types/branch-types.js'
 import { exitProgram } from '../../utils.js'
 import { CreateBranch } from './CreateBranch.js'
+import { DeleteBranch } from './DeleteBranch.js'
 import { ShowBranch } from './ShowBranch.js'
 
 export async function BranchAction () {
@@ -26,5 +27,8 @@ export async function BranchAction () {
   }
   if (branchActions === BRANCH_TYPES.show.action) {
     await ShowBranch()
+  }
+  if (branchActions === BRANCH_TYPES.delete.action) {
+    await DeleteBranch()
   }
 }
