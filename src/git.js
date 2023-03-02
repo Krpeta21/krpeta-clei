@@ -53,9 +53,17 @@ export async function gitCreateBranch (cleanBranchName) {
 
 export async function gitShowBranchs () {
   const { stdout } = await execAsync('git branch')
-  return stdout
+  const cleanText = stdout.replace(/[&\/\\/ /#,+()$~%.'":*?<>{}]/g, '')
+  const cleanTextWithoutSpaces = cleanText.trim()
+  return cleanTextWithoutSpaces
 }
+
 export async function gitDeleteBranch (cleanBranchToDelete) {
   const { stdout } = await execAsync(`git branch -D ${cleanBranchToDelete}`)
+  return stdout
+}
+
+export async function gitSwitchBranch (branchToSwitch) {
+  const { stdout } = await execAsync(`git checkout ${branchToSwitch}`)
   return stdout
 }

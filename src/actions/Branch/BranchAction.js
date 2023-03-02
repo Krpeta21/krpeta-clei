@@ -8,6 +8,7 @@ import { exitProgram } from '../../utils.js'
 import { CreateBranch } from './CreateBranch.js'
 import { DeleteBranch } from './DeleteBranch.js'
 import { ShowBranch } from './ShowBranch.js'
+import { SwitchAction } from './SwitchAction.js'
 
 export async function BranchAction () {
   const branchActions = await select(
@@ -30,5 +31,8 @@ export async function BranchAction () {
   }
   if (branchActions === BRANCH_TYPES.delete.action) {
     await DeleteBranch()
+  }
+  if (branchActions === BRANCH_TYPES.switch.action) {
+    await SwitchAction()
   }
 }

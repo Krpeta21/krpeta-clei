@@ -13,7 +13,7 @@ import { exitProgram } from '../utils.js'
 export async function PushAction () {
   const confirmGitPush = await confirm({
     initialValue: true,
-    message: `${colors.cyan('¿Quieres hacer push al commit?')}`
+    message: `${colors.cyan('¿Quieres hacer push al repositorio?')}`
   })
 
   if (isCancel(confirmGitPush)) exitProgram({ message: 'No se ha iniciado el repositorio.' })

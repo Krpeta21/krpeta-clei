@@ -9,8 +9,9 @@ export async function ShowBranch () {
   const confirmAction = await confirm({
     message: colors.cyan(`
 ${colors.green(
-`Las ramas son:
-${branchs}`)
+`Las ramas son: 
+${branchs}
+`)
 }
 ¿Deseas hacer alguna accion con las ramas?
     `)
