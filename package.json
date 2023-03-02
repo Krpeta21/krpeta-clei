@@ -1,6 +1,6 @@
 {
   "name": "git-easy-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Git basic commands with UI assistant.",
   "bin": {
     "giteasycli": "./src/bin.js"
