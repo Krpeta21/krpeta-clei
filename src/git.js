@@ -50,3 +50,8 @@ export async function gitCreateBranch (cleanBranchName) {
   const { stdout } = await execAsync(`git branch ${cleanBranchName}`)
   return stdout
 }
+
+export async function gitShowBranchs () {
+  const { stdout } = await execAsync('git branch')
+  return stdout
+}
