@@ -1,13 +1,11 @@
 import {
-  outro,
-  confirm,
   isCancel,
-  text,
   select
 } from '@clack/prompts'
 import colors from 'picocolors'
-import { BRANCH_TYPES } from '../types/branch-types.js'
-import { exitProgram } from '../utils.js'
+import { BRANCH_TYPES } from '../../types/branch-types.js'
+import { exitProgram } from '../../utils.js'
+import { CreateBranch } from './CreateBranch.js'
 
 export async function BranchAction () {
   const branchActions = await select(
@@ -21,5 +19,8 @@ export async function BranchAction () {
       ))
     }
   )
-  if (isCancel(branchActions)) exitProgram({ message: 'Se ha cerrado el programa.' })
+  if (isCancel(branchActions)) exitProgram()
+  if (branchActions === BRANCH_TYPES.create.action) {
+    await CreateBranch()
+  }
 }

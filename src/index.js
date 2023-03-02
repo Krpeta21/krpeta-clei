@@ -13,7 +13,7 @@ import { InitAction } from './actions/InitAction.js'
 import { CommitAction } from './actions/CommitAction.js'
 import { PushAction } from './actions/PushAction.js'
 import { ChangeLinkRemote } from './actions/ChangeLinkRemote.js'
-import { BranchAction } from './actions/BranchAction.js'
+import { BranchAction } from './actions/Branch/BranchAction.js'
 
 intro(
   colors.inverse(` Asistente de comandos GIT por ${colors.yellow(' @krpeta21 ')}`)

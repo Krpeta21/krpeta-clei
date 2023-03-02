@@ -45,3 +45,8 @@ export async function changeRemoteUrl (newUrl) {
   const { stdout } = await execAsync(`git remote set-url origin ${newUrl}`)
   return stdout
 }
+
+export async function gitCreateBranch (cleanBranchName) {
+  const { stdout } = await execAsync(`git branch ${cleanBranchName}`)
+  return stdout
+}
