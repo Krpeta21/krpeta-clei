@@ -9,6 +9,7 @@ Command: npx git-easy-cli
 <p align="center">
   <img src="https://i.postimg.cc/YqZsWM8R/demo.gif" alt="Demo"/>
 </p>
+
 ## Technologies used
     
 **Developed in:** Javascript
