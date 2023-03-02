@@ -18,6 +18,7 @@ export async function ChangeLinkRemote () {
       }
     }
   )
+  if (isCancel(remoteUrl)) exitProgram()
 
   const confirmChange = await confirm({
     initialValue: true,
