@@ -13,6 +13,7 @@ import { InitAction } from './actions/InitAction.js'
 import { CommitAction } from './actions/CommitAction.js'
 import { PushAction } from './actions/PushAction.js'
 import { ChangeLinkRemote } from './actions/ChangeLinkRemote.js'
+import { BranchAction } from './actions/BranchAction.js'
 
 intro(
   colors.inverse(` Asistente de comandos GIT por ${colors.yellow(' @krpeta21 ')}`)
@@ -29,6 +30,9 @@ if (isCancel(actionType)) exitProgram({ message: 'Se ha cerrado el programa.' })
 
 if (actionType === ACTIONS_TYPES.init.action) {
   await InitAction()
+}
+if (actionType === ACTIONS_TYPES.branch.action) {
+  await BranchAction()
 }
 if (actionType === ACTIONS_TYPES.commit.action) {
   await CommitAction()
