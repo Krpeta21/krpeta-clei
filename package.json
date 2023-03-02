@@ -1,13 +1,13 @@
 {
-  "name": "fastgit",
+  "name": "git-easy-cli",
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "fastgit": "./src/bin.js"
+    "giteasycli": "./src/bin.js"
   },
   "main": "index.js",
   "scripts": {
-    "fast": "fastgit",
+    "giteasycli": "git-easy-cli",
     "start": "node ./src/index.js"
   },
   "keywords": [],
