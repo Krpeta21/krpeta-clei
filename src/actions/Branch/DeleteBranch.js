@@ -1,33 +1,32 @@
-import { isCancel, text, confirm, outro } from '@clack/prompts'
+import { isCancel, confirm, outro, select } from '@clack/prompts'
 import { gitDeleteBranch, gitShowBranchs } from '../../git.js'
 import colors from 'picocolors'
 import { exitProgram } from '../../utils.js'
 export async function DeleteBranch () {
   const branchs = await gitShowBranchs()
-  const branchToDelete = await text(
+  const arrayBranchs = branchs.split('\n')
+
+  const branchToDelete = await select(
     {
-      message: colors.cyan(`
-        ${colors.green(
-`Las ramas son:
-${branchs}`)
-}
-        Introduce el nombre de la rama que deseas eliminar: 
-            `),
-      validate: value => {
-        if (value.length === 0) return colors.red('El nombre de la rama no puede estar vacio.')
-      }
+      message: colors.cyan('Selecciona la rama a la que quieres hacer push: '),
+      options: arrayBranchs.map((branch) => (
+        {
+          value: branch,
+          label: branch
+        }
+      ))
     }
   )
   if (isCancel(branchToDelete)) exitProgram()
-  const cleanBranchToDelete = branchToDelete.trim()
+
   const confirmDeleteBranch = await confirm({
-    message: colors.cyan(`¿Estas seguro que deseas eliminar la rama con nombre "${colors.red(colors.bold(`${cleanBranchToDelete}`))}"`)
+    message: colors.cyan(`¿Estas seguro que deseas eliminar la rama con nombre "${colors.red(colors.bold(`${branchToDelete}`))}"`)
   })
   if (isCancel(confirmDeleteBranch)) exitProgram()
   if (!confirmDeleteBranch) return colors.yellow('No se ha eliminado la rama')
-  await gitDeleteBranch(cleanBranchToDelete)
+  await gitDeleteBranch(branchToDelete)
   outro(colors.green(`
-        ¡ ✅ Rama Eliminada !
+        ¡ ✅ Rama Eliminada 🗑️!
   ¡Gracias por usar el asistente!
   `))
 }

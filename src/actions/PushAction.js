@@ -2,12 +2,12 @@ import {
   outro,
   confirm,
   isCancel,
-  text
+  select
 } from '@clack/prompts'
 
 import colors from 'picocolors'
 
-import { gitPush } from '../git.js'
+import { gitPush, gitShowBranchs } from '../git.js'
 import { exitProgram } from '../utils.js'
 
 export async function PushAction () {
@@ -23,20 +23,27 @@ export async function PushAction () {
     process.exit(0)
   }
 
-  const branchName = await text({
-    message: 'Introduce el nombre de la rama',
-    validate: (value) => {
-      if (value.length === 0) {
-        return colors.red('El nombre de la rama no puede estar vacío')
-      }
-    }
-  })
+  const branchs = await gitShowBranchs()
+  const arrayBranchs = branchs.split('\n')
 
-  await gitPush(branchName)
+  const branchToSwitch = await select(
+    {
+      message: colors.cyan('Selecciona la rama a la que quieres hacer push: '),
+      options: arrayBranchs.map((branch) => (
+        {
+          value: branch,
+          label: branch
+        }
+      ))
+    }
+  )
+  if (isCancel(branchToSwitch)) exitProgram()
+
+  await gitPush(branchToSwitch)
   outro(
     colors.green(`
-    ¡ ✅ Push realizado!
-    ¡Gracias por usar el asistente!
+    ¡ 🎉 Push realizado con exito 🎉!
+¡Gracias por usar el asistente!
     `)
   )
 }
