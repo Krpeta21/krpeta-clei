@@ -4,7 +4,9 @@ This is a CLI application that helps you with git commands via the terminal.
 
 
 ## Try it using the command
-Command: npx git-easy-cli
+Command: npx git-easy-cli@latest
+
+
 ## DEMO
 <p align="center">
   <img src="https://i.postimg.cc/YqZsWM8R/demo.gif" alt="Demo"/>
