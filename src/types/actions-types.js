@@ -2,26 +2,26 @@ export const ACTIONS_TYPES = {
   init: {
     action: 'init',
     emoji: '📑',
-    description: 'Inicia el proyecto de git.'
+    description: 'Start the git project.'
   },
   remote: {
     action: 'remote',
     emoji: '🎮',
-    description: 'Agrega/Cambia el repositorio de github.'
+    description: 'Add/Change github repository.'
   },
   branch: {
     action: 'branch',
     emoji: '🌱',
-    description: 'Acciones con las ramas.'
+    description: 'Actions with the branches.'
   },
   commit: {
     action: 'commit',
     emoji: '🚧',
-    description: 'Realiza un commit.'
+    description: 'Make a commit.'
   },
   push: {
     action: 'push',
     emoji: '⬆️ ',
-    description: 'Haz un push de tus archivos al repositorio.'
+    description: 'Push your files to the repository.'
   }
 }

@@ -8,7 +8,7 @@ export async function SwitchAction () {
   const arrayBranchs = branchs.split('\n')
   const branchToSwitch = await select(
     {
-      message: colors.cyan('Selecciona la rama a la que quieres cambiar: '),
+      message: colors.cyan('Select the branch you want to switch to: '),
       options: arrayBranchs.map((branch) => (
         {
           value: branch,
@@ -21,8 +21,7 @@ export async function SwitchAction () {
   await gitSwitchBranch(branchToSwitch)
   outro(
     colors.green(`
-¡ 🔀 Rama Cambiada a ${branchToSwitch}!
-    ¡Gracias por usar el asistente!
+¡ 🔀 Branch switched to ${branchToSwitch}!
 `)
   )
 }

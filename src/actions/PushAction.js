@@ -16,7 +16,7 @@ export async function PushAction () {
 
   const branchToSwitch = await select(
     {
-      message: colors.cyan('Selecciona la rama a la que quieres hacer push: '),
+      message: colors.cyan('Select the branch you want to push: '),
       options: arrayBranchs.map((branch) => (
         {
           value: branch,
@@ -27,16 +27,15 @@ export async function PushAction () {
   )
   if (isCancel(branchToSwitch)) exitProgram()
   const confirmPushBranch = await confirm({
-    message: colors.white(`¿Estas seguro que deseas hacer push a la rama "${colors.green(colors.bold(`${branchToSwitch}`))}"`)
+    message: colors.white(`Are you sure you want to push to the branch? "${colors.green(colors.bold(`${branchToSwitch}`))}"`)
   })
   if (isCancel(confirmPushBranch)) exitProgram()
-  if (!confirmPushBranch) return colors.yellow('No se ha hecho push al repositorio.')
+  if (!confirmPushBranch) return colors.yellow('The push has not been made.')
 
   await gitPush(branchToSwitch)
   outro(
     colors.green(`
-   ¡ 🎉 Push realizado con exito 🎉!
-     ¡Gracias por usar el asistente!
+   ¡ 🎉 Push made successfully 🎉!
     `)
   )
 }

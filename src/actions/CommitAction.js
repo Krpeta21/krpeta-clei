@@ -19,13 +19,13 @@ export async function CommitAction () {
   const [stagedFiles, errorStagedFiles] = await trytm(getStagedFiles())
 
   if (errorChangedFiles ?? errorStagedFiles) {
-    outro(colors.red('Error: Comprueba que estás en un repositorio de git'))
+    outro(colors.red('Error: Check that you are in a git repository.'))
     process.exit(1)
   }
 
   if (stagedFiles.length === 0 && changedFiles.length > 0) {
     const files = await multiselect({
-      message: colors.cyan('Selecciona los ficheros que quieres añadir al commit:'),
+      message: colors.cyan('Select the files you want to add to the commit:'),
       options: changedFiles.map(file => ({
         value: file,
         label: file
@@ -38,7 +38,7 @@ export async function CommitAction () {
   }
 
   const commitType = await select({
-    message: colors.cyan('Selecciona el tipo de commit:'),
+    message: colors.cyan('Select the type of commit: '),
     options: Object.entries(COMMIT_TYPES).map(([key, value]) => ({
       value: key,
       label: `${value.emoji} ${key.padEnd(10, ' ')} · ${value.description}`
@@ -48,14 +48,14 @@ export async function CommitAction () {
   if (isCancel(commitType)) exitProgram()
 
   const commitMessage = await text({
-    message: colors.cyan('Introduce el mensaje del commit:'),
+    message: colors.cyan('Enter the commit message: '),
     validate: (value) => {
       if (value.length === 0) {
-        return colors.red('El mensaje no puede estar vacío')
+        return colors.red('The message cannot be empty.')
       }
 
       if (value.length > 50) {
-        return colors.red('El mensaje no puede tener más de 100 caracteres')
+        return colors.red('The message cannot be longer than 100 characters.')
       }
     }
   })
@@ -68,9 +68,9 @@ export async function CommitAction () {
   if (release) {
     breakingChange = await confirm({
       initialValue: false,
-      message: `${colors.cyan('¿Tiene este commit cambios que rompen la compatibilidad anterior?')}
+      message: `${colors.cyan('Does this commit have changes that break previous compatibility?')}
       
-  ${colors.yellow('Si la respuesta es sí, deberías crear un commit con el tipo "BREAKING CHANGE" y al hacer release se publicará una versión major')}`
+  ${colors.yellow('If the answer is yes, you should create a commit with the type "BREAKING CHANGE" and when you release a major version will be published.')}`
     })
 
     if (isCancel(breakingChange)) exitProgram()
@@ -81,23 +81,22 @@ export async function CommitAction () {
 
   const shouldContinue = await confirm({
     initialValue: true,
-    message: `${colors.cyan('¿Quieres crear el commit con el siguiente mensaje?')}
+    message: `${colors.cyan('Do you want to create the commit with the following message?')}
     ${colors.green(colors.bold(commit))}
-    ${colors.cyan('¿Confirmas?')}`
+    ${colors.cyan('Do you confirm?')}`
   })
 
   if (isCancel(shouldContinue)) exitProgram()
 
   if (!shouldContinue) {
-    outro(colors.yellow('No se ha creado el commit'))
+    outro(colors.yellow('Commit not created.'))
     process.exit(0)
   }
 
   await gitCommit({ commit })
   outro(
     colors.green(`
-    ¡ ✅ Commit realizado!
-    ¡Gracias por usar el asistente!
+    ¡ ✅ Commit succefully !
     `)
   )
 }

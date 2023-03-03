@@ -20,25 +20,25 @@ export async function InitAction () {
 
   const confirmAddRemote = await confirm({
     initialValue: true,
-    message: `${colors.cyan('¿Quieres agregar la URL de tu repositorio?')}`
+    message: `${colors.cyan('Do you want to add the URL of your repository?')}`
   }
   )
-  if (isCancel(confirmAddRemote)) exitProgram({ message: 'No se ha añadido la url del repositorio.' })
+  if (isCancel(confirmAddRemote)) exitProgram()
   if (!confirmAddRemote) {
-    outro(colors.yellow('No se ha añadido la url del repositorio.'))
+    outro(colors.yellow('No repository url added.'))
     process.exit(0)
   }
   const urlRepo = await text({
-    message: colors.cyan('Introduce la URL del repositorio del commit:'),
+    message: colors.cyan('Enter the repository URL: '),
     validate: (value) => {
       if (value.length === 0) {
-        return colors.red('La URL no puede estar vacía.')
+        return colors.red('The URL cannot be empty.')
       }
     }
   })
-  if (isCancel(urlRepo)) exitProgram({ message: 'No se ha añadido la url del repositorio.' })
+  if (isCancel(urlRepo)) exitProgram()
   await addRemote(urlRepo)
   outro(
-    colors.green('¡Gracias por usar el asistente!')
+    colors.green('Git started successfully.')
   )
 }

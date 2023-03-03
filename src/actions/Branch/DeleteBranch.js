@@ -8,7 +8,7 @@ export async function DeleteBranch () {
 
   const branchToDelete = await select(
     {
-      message: colors.cyan('Selecciona la rama a la que quieres hacer push: '),
+      message: colors.cyan('Select the branch you want to delete: '),
       options: arrayBranchs.map((branch) => (
         {
           value: branch,
@@ -20,13 +20,12 @@ export async function DeleteBranch () {
   if (isCancel(branchToDelete)) exitProgram()
 
   const confirmDeleteBranch = await confirm({
-    message: colors.cyan(`¿Estas seguro que deseas eliminar la rama con nombre "${colors.red(colors.bold(`${branchToDelete}`))}"`)
+    message: colors.cyan(`Are you sure you want to delete the named branch "${colors.red(colors.bold(`${branchToDelete}`))}"`)
   })
   if (isCancel(confirmDeleteBranch)) exitProgram()
-  if (!confirmDeleteBranch) return colors.yellow('No se ha eliminado la rama')
+  if (!confirmDeleteBranch) return colors.yellow('Branch not deleted')
   await gitDeleteBranch(branchToDelete)
   outro(colors.green(`
-        ¡ ✅ Rama Eliminada 🗑️!
-  ¡Gracias por usar el asistente!
+        ¡ ✅ Branch ${colors.red(`${branchToDelete}`)} Deleted 🗑️ !
   `))
 }

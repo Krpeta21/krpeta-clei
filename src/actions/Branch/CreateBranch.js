@@ -6,10 +6,10 @@ import { exitProgram } from '../../utils.js'
 export async function CreateBranch () {
   const branchName = await text(
     {
-      message: colors.cyan('Introduce el nombre de la rama: '),
+      message: colors.cyan('Enter the name of the branch: '),
       validate: (value) => {
         if (value.length === 0) {
-          return colors.red('El nombre de la rama no puede estar vacio.')
+          return colors.red('The branch name cannot be empty.')
         }
       }
     }
@@ -17,18 +17,18 @@ export async function CreateBranch () {
   const cleanBranchName = branchName.trim()
   const confirmCreateBranch = await confirm(
     {
-      message: colors.cyan(`¿Estas seguro que quieres crear una rama con nombre: ${cleanBranchName}`)
+      message: colors.cyan(`Are you sure you want to create a branch named: ${cleanBranchName}`)
     }
   )
   if (isCancel(confirmCreateBranch)) exitProgram()
   if (!confirmCreateBranch) {
-    outro(colors.yellow('No se ha creado la rama.'))
+    outro(colors.yellow('The branch has not been created.'))
     process.exit(0)
   }
 
   await gitCreateBranch(cleanBranchName)
   outro(colors.green(`
-        ¡ ✅ Rama Creada !
-  ¡Gracias por usar el asistente!
+        ¡ ✅ Branch Created !
+  
   `))
 }

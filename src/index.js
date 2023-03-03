@@ -16,17 +16,17 @@ import { ChangeLinkRemote } from './actions/ChangeLinkRemote.js'
 import { BranchAction } from './actions/Branch/BranchAction.js'
 
 intro(
-  colors.inverse(` Asistente de comandos GIT por ${colors.yellow(' @krpeta21 ')}`)
+  colors.inverse(` Git Command Helper by ${colors.yellow(' @krpeta21 ')}`)
 )
 
 const actionType = await select({
-  message: colors.cyan('Selecciona la accion que deseas hacer:'),
+  message: colors.cyan('Select the action you want to do:'),
   options: Object.entries(ACTIONS_TYPES).map(([key, value]) => ({
     value: key,
     label: `${value.emoji} ${key.padEnd(10, ' ')} · ${value.description}`
   }))
 })
-if (isCancel(actionType)) exitProgram({ message: 'Se ha cerrado el programa.' })
+if (isCancel(actionType)) exitProgram()
 
 if (actionType === ACTIONS_TYPES.init.action) {
   await InitAction()

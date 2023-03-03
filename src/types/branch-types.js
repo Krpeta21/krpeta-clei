@@ -2,21 +2,21 @@ export const BRANCH_TYPES = {
   create: {
     action: 'create',
     emoji: ' ✨ ',
-    description: 'Crea una nueva rama.'
+    description: 'Create a new branch.'
   },
   show: {
     action: 'show',
     emoji: ' 🔍️ ',
-    description: 'Muestra las ramas actuales.'
+    description: 'Shows the current branches.'
   },
   switch: {
     action: 'switch',
     emoji: ' 🔀 ',
-    description: 'Cambia de rama.'
+    description: 'Change branch.'
   },
   delete: {
     action: 'delete',
     emoji: ' 🗑️  ',
-    description: 'Borra una rama.'
+    description: 'Delete a branch.'
   }
 }

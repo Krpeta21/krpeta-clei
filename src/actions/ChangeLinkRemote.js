@@ -10,10 +10,10 @@ import { exitProgram } from '../utils.js'
 export async function ChangeLinkRemote () {
   const remoteUrl = await text(
     {
-      message: colors.cyan('Introduce la URL del repositorio: '),
+      message: colors.cyan('Enter the repository URL: '),
       validate: (value) => {
         if (value.length === 0) {
-          return colors.red('El mensaje no puede estar vacío')
+          return colors.red('The URL cannot be empty.')
         }
       }
     }
@@ -22,20 +22,19 @@ export async function ChangeLinkRemote () {
 
   const confirmChange = await confirm({
     initialValue: true,
-    message: `${colors.cyan(`Deseas añadir ${remoteUrl} como la direccion del repositorio?`)}`
+    message: `${colors.cyan(`Do you want to add ${remoteUrl} as the address of the repository?`)}`
   })
 
-  if (isCancel(confirmChange)) return exitProgram({ message: 'Se ha cancelado esta accion.' })
+  if (isCancel(confirmChange)) return exitProgram()
   if (!confirmChange) {
-    outro(colors.yellow('No se ha cambiado la URL'))
+    outro(colors.yellow('URL not changed.'))
     process.exit(0)
   }
 
   await changeRemoteUrl(remoteUrl)
   outro(
     colors.green(`
-      ¡ ✅ Cambio de URL realizado!
-      ¡Gracias por usar el asistente!
+      ¡ ✅ URL change done !
       `)
   )
 }

@@ -9,16 +9,16 @@ export async function ShowBranch () {
   const confirmAction = await confirm({
     message: colors.cyan(`
 ${colors.green(
-`Las ramas son: 
+`The branches are: 
 ${branchs}
 `)
 }
-¿Deseas hacer alguna accion con las ramas?
+Do you want to do something with the branches?
     `)
   })
   if (isCancel(confirmAction)) exitProgram()
   if (!confirmAction) {
-    outro(colors.yellow('Se ha cerrado el programa.'))
+    outro(colors.yellow('The program has been closed.'))
     process.exit(0)
   }
   await BranchAction()

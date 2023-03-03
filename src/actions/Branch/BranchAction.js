@@ -13,7 +13,7 @@ import { SwitchAction } from './SwitchAction.js'
 export async function BranchAction () {
   const branchActions = await select(
     {
-      message: colors.cyan('Selecciona la accion que quieres hacer: '),
+      message: colors.cyan('Select the action you want to do: '),
       options: Object.entries(BRANCH_TYPES).map(([key, value]) => (
         {
           value: key,
