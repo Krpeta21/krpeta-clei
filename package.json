@@ -1,6 +1,6 @@
 {
   "name": "git-easy-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Git basic commands with UI assistant.",
   "bin": {
     "giteasycli": "./src/bin.js"
@@ -10,7 +10,7 @@
     "cli": "giteasycli",
     "start": "node ./src/index.js"
   },
-  "keywords": [],
+  "keywords": ["command","cli","terminal","git","colors","easy","console"],
   "author": "",
   "license": "ISC",
   "type": "module",
