@@ -26,7 +26,7 @@ export async function CommitAction () {
   if (stagedFiles.length === 0 && changedFiles.length > 0) {
     const confirmAddAll = await confirm({
       initialValue: true,
-      message: colors.cyan('Do you want to add all files?')
+      message: colors.cyan('Do you want to commit all files?')
     })
     if (confirmAddAll) {
       await gitAddAll()
