@@ -67,3 +67,8 @@ export async function gitSwitchBranch (branchToSwitch) {
   const { stdout } = await execAsync(`git checkout ${branchToSwitch}`)
   return stdout
 }
+
+export async function gitAddAll () {
+  const { stdout } = await execAsync('git add .')
+  return stdout
+}

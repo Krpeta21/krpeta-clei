@@ -10,7 +10,7 @@ import {
 import colors from 'picocolors'
 import { trytm } from '@bdsqqq/try'
 import { COMMIT_TYPES } from '../types/commit-types.js'
-import { getChangedFiles, getStagedFiles, gitAdd, gitCommit } from '../git.js'
+import { getChangedFiles, getStagedFiles, gitAdd, gitAddAll, gitCommit } from '../git.js'
 
 import { exitProgram } from '../utils.js'
 
@@ -24,17 +24,25 @@ export async function CommitAction () {
   }
 
   if (stagedFiles.length === 0 && changedFiles.length > 0) {
-    const files = await multiselect({
-      message: colors.cyan('Select the files you want to add to the commit:'),
-      options: changedFiles.map(file => ({
-        value: file,
-        label: file
-      }))
+    const confirmAddAll = await confirm({
+      initialValue: true,
+      message: colors.cyan('Do you want to add all files?')
     })
+    if (confirmAddAll) {
+      await gitAddAll()
+    } else if (!confirmAddAll) {
+      const files = await multiselect({
+        message: colors.cyan('Select the files you want to add to the commit:'),
+        options: changedFiles.map(file => ({
+          value: file,
+          label: file
+        }))
+      })
 
-    if (isCancel(files)) exitProgram()
+      if (isCancel(files)) exitProgram()
 
-    await gitAdd({ files })
+      await gitAdd({ files })
+    }
   }
 
   const commitType = await select({

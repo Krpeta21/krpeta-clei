@@ -10,10 +10,10 @@ import { exitProgram } from './utils.js'
 import { ACTIONS_TYPES } from './types/actions-types.js'
 
 import { InitAction } from './actions/InitAction.js'
-import { CommitAction } from './actions/CommitAction.js'
 import { PushAction } from './actions/PushAction.js'
 import { ChangeLinkRemote } from './actions/ChangeLinkRemote.js'
 import { BranchAction } from './actions/Branch/BranchAction.js'
+import { CommitAction } from './actions/CommitAction.js'
 
 intro(
   colors.inverse(` Git Command Helper by ${colors.yellow(' @krpeta21 ')}`)
