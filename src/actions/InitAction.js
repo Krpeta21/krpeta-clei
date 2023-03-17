@@ -6,13 +6,13 @@ import { exitProgram } from '../utils.js'
 export async function InitAction () {
   const confirmGitInit = await confirm({
     initialValue: true,
-    message: `${colors.cyan('¿Quieres iniciar el repositorio en esta carpeta?')}`
+    message: `${colors.cyan('Do you want to start the repository in this folder?')}`
   })
 
-  if (isCancel(confirmGitInit)) exitProgram({ message: 'No se ha iniciado el repositorio.' })
+  if (isCancel(confirmGitInit)) exitProgram()
 
   if (!confirmGitInit) {
-    outro(colors.yellow('No se ha iniciado el repositorio.'))
+    outro(colors.yellow('The repository did not start.'))
     process.exit(0)
   }
 
